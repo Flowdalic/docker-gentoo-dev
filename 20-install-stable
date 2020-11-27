@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+source config
+
+readarray DEFAULT_PACKAGES <<EOF
+clang
+EOF
+emerge ${DEFAULT_PACKAGES[@]}
+
+rm -rf "$(portageq distdir)/*"
