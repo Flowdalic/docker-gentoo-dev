@@ -22,29 +22,14 @@ OPTIND=1
 
 readonly CONTAINER_NAME="flowdalic/gentoo-dev"
 
-set +u
-if [[ -z $1 ]]; then
-	VERSION_GIVEN_VIA_ARGUMENT=false
-else
-	VERSION_GIVEN_VIA_ARGUMENT=true
+if ! git diff-index --quiet HEAD --; then
+    >&2 echo "ERROR: Uncommited changes, please commit"
+    exit 1
 fi
-set -u
 
-TAG_HEAD=true
-if ! ${VERSION_GIVEN_VIA_ARGUMENT}; then
-	set +e
-	VERSION_TAG=$(git describe --match "[0-9]*.[0-9]*" HEAD 2>/dev/null)
-	set -e
-	if [[ -z $VERSION_TAG ]]; then
-		echo "Current commit is not tagged, please tag it"
-		exit 1
-	fi
-	VERSION=${VERSION_TAG}
-else
-	VERSION="${1}"
-	# TODO: Abort if dirty.
-
-	# TODO: See if the given tag exists and matches the current HEAD, if so, set TAG_HEAD=false
+VERSION=$(date +%Y%m%d)
+if [[ $(git tag -l "${VERSION}") ]]; then
+    VERSION+=".$(date +%H%M)"
 fi
 
 readonly DOCKER_COORDINATES="${CONTAINER_NAME}:${VERSION}"
@@ -57,9 +42,7 @@ docker build \
 
 docker push "${DOCKER_COORDINATES}"
 
-if ${TAG_HEAD}; then
-	git tag -m "${CONTAINER_NAME} ${VERSION}" "${VERSION}"
-fi
+git tag -m "${CONTAINER_NAME} ${VERSION}" "${VERSION}"
 
 git push origin \
 	master \
