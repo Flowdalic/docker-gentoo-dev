@@ -1,6 +1,23 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-source config
+# Credit to sam for some of the container adjustments:
+# https://wiki.gentoo.org/wiki/User:Sam/Quick_Docker
+cat >> /etc/portage/make.conf <<-EOF
+    FEATURES="\${FEATURES} -ipc-sandbox -pid-sandbox -network-sandbox -usersandbox -mount-sandbox -sandbox"
+    FEATURES="\${FEATURES} -news -merge-sync"
+    FEATURES="\${FEATURES} parallel-install parallel-fetch"
+    FEATURES="\${FEATURES} buildpkg"
 
-emerge --sync
+    EMERGE_DEFAULT_OPTS="--jobs 3 --binpkg-respect-use=y --getbinpkg=y"
+
+    BINPKG_COMPRESS="xz"
+EOF
+
+cat > /etc/portage/binrepos.conf <<-EOF
+    [binhost]
+    priority = 9999
+    sync-uri = https://gentoo.osuosl.org/experimental/amd64/binpkg/default/linux/17.1/x86-64/
+EOF
+
+emerge-webrsync --quiet

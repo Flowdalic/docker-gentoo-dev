@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+cat > /usr/local/bin/set-makeopts-in-make.conf <<-EOF
+	#!/usr/bin/env bash
+	NPROC=$(nproc)
+	echo "MAKEOPTS=\"--jobs ${NPROC} --load-average ${NPROC}\" >> /etc/portage/make.conf
+EOF
+chmod 755 /usr/local/bin/set-makeopts-in-make.conf

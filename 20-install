@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cat > /etc/portage/package.accept_keywords/docker-gentoo-dev <<EOF
+app-admin/ansible
+app-admin/ansible-core
+app-admin/ansible-lint
+dev-python/ansible-compat
+EOF
+
+readarray PACKAGES <<EOF
+app-admin/ansible-lint
+app-portage/gentoolkit
+dev-lang/rust-bin
+sys-devel/clang
+EOF
+
+emerge ${PACKAGES[@]}
+
+# Clean distdir and pkgdir, since its contents will not be needed
+# anymore.
+rm -rf "$(portageq distdir)/*"
+rm -rf "$(portageq pkgdir)/*"
