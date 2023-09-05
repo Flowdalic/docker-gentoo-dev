@@ -38,7 +38,7 @@ EOF
 
 emerge --sync
 
-mirroselect -s5
+mirrorselect -s5
 
 emerge \
 	--update \

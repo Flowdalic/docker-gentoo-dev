@@ -9,6 +9,6 @@ cat > /usr/local/bin/prepare-for-emerge <<-EOF
 
     emerge --sync
 
-    mirroselect -s5
+    mirrorselect -s5
 EOF
 chmod 755 /usr/local/bin/prepare-for-emerge
