@@ -74,3 +74,11 @@ chmod 755 /usr/local/bin/drop-pkgdir
 
 drop-distdir
 drop-pkgdir
+
+cat > /usr/local/bin/force-update-conf <<-EOF
+	#!/usr/bin/env bash
+	yes | etc-update --automode -3
+EOF
+chmod 755 /usr/local/bin/force-update-conf
+
+force-update-conf
