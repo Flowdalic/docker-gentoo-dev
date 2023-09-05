@@ -11,6 +11,8 @@ EOF
 readarray PACKAGES <<EOF
 app-admin/ansible-lint
 app-portage/gentoolkit
+dev-java/mill-bin
+dev-java/openjdk-bin
 dev-lang/rust-bin
 sys-devel/clang
 EOF
