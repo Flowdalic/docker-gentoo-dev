@@ -40,6 +40,9 @@ emerge --sync
 
 mirrorselect -s5
 
+NPROC=$(nproc)
+export MAKEOPTS="--jobs ${NPROC} --load-average ${NPROC}"
+
 emerge \
 	--update \
 	--changed-use \
