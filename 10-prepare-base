@@ -23,7 +23,7 @@ cat > /etc/portage/binrepos.conf <<-EOF
 EOF
 
 emerge-webrsync
-emerge dev-vcs/git
+emerge dev-vcs/git app-portage/mirrorselect
 
 rm -rf /var/db/repos/gentoo
 
@@ -37,6 +37,8 @@ cat > /etc/portage/repos.conf/gentoo.conf <<-EOF
 EOF
 
 emerge --sync
+
+mirroselect -s5
 
 emerge \
 	--update \

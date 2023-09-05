@@ -8,5 +8,7 @@ cat > /usr/local/bin/prepare-for-emerge <<-EOF
 	echo "MAKEOPTS=\"--jobs ${NPROC} --load-average ${NPROC}\"" >> /etc/portage/make.conf
 
     emerge --sync
+
+    mirroselect -s5
 EOF
 chmod 755 /usr/local/bin/prepare-for-emerge
