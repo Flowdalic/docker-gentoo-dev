@@ -13,7 +13,7 @@ cat >> /etc/portage/make.conf <<-EOF
 
     BINPKG_COMPRESS="xz"
 
-	PORTAGE_RO_DISTDIRS="/ro-distdir"
+    PORTAGE_RO_DISTDIRS="/ro-distdir"
 EOF
 
 cat > /etc/portage/binrepos.conf <<-EOF
@@ -62,7 +62,7 @@ cat > /usr/local/bin/drop-distdir <<-EOF
     set -euo pipefail
 
 	DISTDIR=$(portageq distdir)
-	rm -rf "${DISTDIR}"/*
+	rm -rf "\${DISTDIR}"/*
 EOF
 chmod 755 /usr/local/bin/drop-distdir
 
@@ -71,7 +71,7 @@ cat > /usr/local/bin/drop-pkgdir <<-EOF
     set -euo pipefail
 
 	PKGDIR=$(portageq pkgdir)
-	rm -rf "${PKGDIR}"/*
+	rm -rf "\${PKGDIR}"/*
 EOF
 chmod 755 /usr/local/bin/drop-pkgdir
 
