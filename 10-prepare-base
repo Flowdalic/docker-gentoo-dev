@@ -53,3 +53,24 @@ emerge \
 	@world
 
 emerge --depclean
+
+cat > /usr/local/bin/drop-distdir <<-EOF
+	#!/usr/bin/env bash
+    set -euo pipefail
+
+	DISTDIR=$(portageq distdir)
+	rm -rf "${DISTDIR}"/*
+EOF
+chmod 755 /usr/local/bin/drop-distdir
+
+cat > /usr/local/bin/drop-pkgdir <<-EOF
+	#!/usr/bin/env bash
+    set -euo pipefail
+
+	PKGDIR=$(portageq pkgdir)
+	rm -rf "${PKGDIR}"/*
+EOF
+chmod 755 /usr/local/bin/drop-pkgdir
+
+drop-distdir
+drop-pkgdir

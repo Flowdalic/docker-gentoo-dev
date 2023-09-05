@@ -23,5 +23,5 @@ emerge ${PACKAGES[@]}
 
 # Clean distdir and pkgdir, since its contents will not be needed
 # anymore.
-rm -rf "$(portageq distdir)/*"
-rm -rf "$(portageq pkgdir)/*"
+drop-distdir
+drop-pkgdir
