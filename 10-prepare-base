@@ -12,6 +12,8 @@ cat >> /etc/portage/make.conf <<-EOF
     EMERGE_DEFAULT_OPTS="--jobs 3 --binpkg-respect-use=y --getbinpkg=y"
 
     BINPKG_COMPRESS="xz"
+
+	PORTAGE_RO_DISTDIRS="/ro-distdir"
 EOF
 
 cat > /etc/portage/binrepos.conf <<-EOF
@@ -21,3 +23,31 @@ cat > /etc/portage/binrepos.conf <<-EOF
 EOF
 
 emerge-webrsync
+emerge dev-vcs/git
+
+rm -rf /var/db/repos/gentoo
+
+mkdir /etc/portage/repos.conf
+# Note: We do not enable sync-git-verify-commit-signature here.
+cat > /etc/portage/repos.conf/gentoo.conf <<-EOF
+	[gentoo]
+	location = /var/db/repos/gentoo
+	sync-type = git
+	sync-uri = https://github.com/gentoo-mirror/gentoo.git
+EOF
+
+emerge --sync
+
+emerge \
+	--update \
+	--changed-use \
+	--deep \
+	--complete-graph \
+	--with-bdeps=y \
+	--backtrack=100 \
+	--tree \
+	--unordered-display \
+	--usepkg y \
+	@world
+
+emerge --depclean

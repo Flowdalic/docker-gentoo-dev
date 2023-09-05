@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
-cat > /usr/local/bin/set-makeopts-in-make.conf <<-EOF
+cat > /usr/local/bin/prepare-for-emerge <<-EOF
 	#!/usr/bin/env bash
+    set -euo pipefail
+
 	NPROC=$(nproc)
-	echo "MAKEOPTS=\"--jobs ${NPROC} --load-average ${NPROC}\" >> /etc/portage/make.conf
+	echo "MAKEOPTS=\"--jobs ${NPROC} --load-average ${NPROC}\"" >> /etc/portage/make.conf
+
+    emerge --sync
 EOF
-chmod 755 /usr/local/bin/set-makeopts-in-make.conf
+chmod 755 /usr/local/bin/prepare-for-emerge
