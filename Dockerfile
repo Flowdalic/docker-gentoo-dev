@@ -1,7 +1,9 @@
+FROM gentoo/portage:latest as portage
 FROM gentoo/stage3:latest
 
 WORKDIR /root
 
+COPY --from=portage /var/db/repos/gentoo /var/db/repos/gentoo
 COPY 10-prepare-base .
 RUN chmod 755 10-prepare-base && ./10-prepare-base
 

@@ -22,7 +22,6 @@ cat > /etc/portage/binrepos.conf <<-EOF
     sync-uri = https://gentoo.osuosl.org/experimental/amd64/binpkg/default/linux/17.1/x86-64/
 EOF
 
-emerge-webrsync
 emerge dev-vcs/git app-portage/mirrorselect
 
 rm -rf /var/db/repos/gentoo
