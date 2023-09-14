@@ -1,6 +1,9 @@
 app-admin/ansible-lint
+app-doc/doxygen
 app-portage/gentoolkit
 dev-java/mill-bin
 dev-java/openjdk-bin
 dev-lang/rust-bin
+dev-util/include-what-you-use
 sys-devel/clang
+sys-process/numactl
