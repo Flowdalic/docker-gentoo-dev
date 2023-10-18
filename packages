@@ -5,5 +5,6 @@ dev-java/mill-bin
 dev-java/openjdk-bin
 dev-lang/rust-bin
 dev-util/include-what-you-use
+dev-util/shellcheck-bin
 sys-devel/clang
 sys-process/numactl
