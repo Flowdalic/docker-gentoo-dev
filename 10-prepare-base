@@ -22,6 +22,26 @@ cat > /etc/portage/binrepos.conf <<-EOF
     sync-uri = https://gentoo.osuosl.org/experimental/amd64/binpkg/default/linux/17.1/x86-64/
 EOF
 
+NPROC=$(nproc)
+export MAKEOPTS="--jobs ${NPROC} --load-average ${NPROC}"
+
+emerge-world() {
+    emerge \
+	--update \
+	--changed-use \
+	--deep \
+	--complete-graph \
+	--with-bdeps=y \
+	--backtrack=100 \
+	--tree \
+	--unordered-display \
+	--usepkg y \
+	@world
+
+}
+
+emerge-world
+
 emerge dev-vcs/git app-portage/mirrorselect
 
 rm -rf /var/db/repos/gentoo
@@ -39,20 +59,7 @@ emerge --sync
 
 mirrorselect -s5
 
-NPROC=$(nproc)
-export MAKEOPTS="--jobs ${NPROC} --load-average ${NPROC}"
-
-emerge \
-	--update \
-	--changed-use \
-	--deep \
-	--complete-graph \
-	--with-bdeps=y \
-	--backtrack=100 \
-	--tree \
-	--unordered-display \
-	--usepkg y \
-	@world
+emerge-world
 
 emerge --depclean
 
