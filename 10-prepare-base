@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Setup getuto (OpenPGP binpkg verification) early on.
+emerge getuto
+getuto
+
 # Credit to sam for some of the container adjustments:
 # https://wiki.gentoo.org/wiki/User:Sam/Quick_Docker
 cat >> /etc/portage/make.conf <<-EOF
@@ -8,6 +12,7 @@ cat >> /etc/portage/make.conf <<-EOF
     FEATURES="\${FEATURES} -news -merge-sync"
     FEATURES="\${FEATURES} parallel-install parallel-fetch"
     FEATURES="\${FEATURES} buildpkg"
+	FEATURES="\${FEATURES} binpkg-request-signature"
 
     EMERGE_DEFAULT_OPTS="--jobs 3 --binpkg-respect-use=y --getbinpkg=y"
 
