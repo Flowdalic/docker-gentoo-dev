@@ -16,12 +16,6 @@ cat >> /etc/portage/make.conf <<-EOF
     PORTAGE_RO_DISTDIRS="/ro-distdir"
 EOF
 
-cat > /etc/portage/binrepos.conf <<-EOF
-    [binhost]
-    priority = 9999
-    sync-uri = https://gentoo.osuosl.org/experimental/amd64/binpkg/default/linux/17.1/x86-64/
-EOF
-
 NPROC=$(nproc)
 export MAKEOPTS="--jobs ${NPROC} --load-average ${NPROC}"
 
