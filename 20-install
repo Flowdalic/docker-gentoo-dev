@@ -67,7 +67,6 @@ cat > /etc/portage/package.unmask/texlive <<EOF
 >=dev-texlive/texlive-publishers-2023_p69759
 >=dev-texlive/texlive-xetex-2023_p69452
 EOF
-
 cp /etc/portage/package.{unmask,accept_keywords}/texlive
 
 mapfile PACKAGES < packages
