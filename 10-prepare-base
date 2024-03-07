@@ -7,8 +7,8 @@ cat >> /etc/portage/make.conf <<-EOF
     FEATURES="\${FEATURES} -ipc-sandbox -pid-sandbox -network-sandbox -usersandbox -mount-sandbox -sandbox"
     FEATURES="\${FEATURES} -news -merge-sync"
     FEATURES="\${FEATURES} parallel-install parallel-fetch"
-    FEATURES="\${FEATURES} buildpkg"
-	FEATURES="\${FEATURES} binpkg-request-signature"
+    # FEATURES="\${FEATURES} buildpkg"
+    FEATURES="\${FEATURES} binpkg-request-signature"
 
     EMERGE_DEFAULT_OPTS="--jobs 3 --binpkg-respect-use=y --getbinpkg=y"
 
