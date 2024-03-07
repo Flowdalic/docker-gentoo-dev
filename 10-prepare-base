@@ -12,6 +12,9 @@ cat >> /etc/portage/make.conf <<-EOF
 
 	EMERGE_DEFAULT_OPTS="--jobs 3 --binpkg-respect-use=y --getbinpkg=y"
 
+	LINGUAS="en de"
+	L10N="en de"
+
 	BINPKG_COMPRESS="xz"
 
 	PORTAGE_RO_DISTDIRS="/ro-distdir"
