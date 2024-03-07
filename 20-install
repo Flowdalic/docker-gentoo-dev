@@ -69,6 +69,19 @@ cat > /etc/portage/package.unmask/texlive <<EOF
 EOF
 cp /etc/portage/package.{unmask,accept_keywords}/texlive
 
+cat > /etc/portage/package.use/texlive <<EOF
+app-text/texlive extra
+app-text/texlive graphics
+app-text/texlive luatex
+app-text/texlive publishers
+app-text/texlive science
+app-text/texlive tex4ht
+EOF
+
+cat >> /etc/portage/make.conf <<EOF
+USE="\${USE} icu"
+EOF
+
 mapfile PACKAGES < packages
 
 NPROC=$(nproc)
