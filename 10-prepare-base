@@ -41,7 +41,6 @@ emerge-world() {
 	--unordered-display \
 	--usepkg y \
 	@world
-
 }
 
 emerge-world
@@ -70,7 +69,7 @@ emerge --depclean
 
 cat > /usr/local/bin/drop-distdir <<-EOF
 	#!/usr/bin/env bash
-    set -euo pipefail
+	set -euo pipefail
 
 	DISTDIR=$(portageq distdir)
 	rm -rf "\${DISTDIR}"/*
