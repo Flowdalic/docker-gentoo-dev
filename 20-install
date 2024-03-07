@@ -87,7 +87,7 @@ mapfile PACKAGES < packages
 NPROC=$(nproc)
 export MAKEOPTS="--jobs ${NPROC} --load-average ${NPROC}"
 
-emerge ${PACKAGES[@]}
+emerge -tv ${PACKAGES[@]}
 
 # Clean distdir and pkgdir, since its contents will not be needed
 # anymore.
