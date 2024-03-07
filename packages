@@ -1,6 +1,7 @@
 app-admin/ansible-lint
 app-portage/gentoolkit
 app-text/doxygen
+app-text/texlive
 app-text/tree
 dev-build/meson
 dev-cpp/gtest
@@ -11,8 +12,12 @@ dev-lang/nasm
 dev-lang/rust-bin
 dev-libs/boost
 dev-libs/userspace-rcu
+dev-tex/rubber
 dev-util/include-what-you-use
 dev-util/shellcheck-bin
+media-fonts/fantasque-sans-mono
+media-fonts/inconsolata
+media-fonts/noto
 sys-devel/clang
 sys-libs/liburing
 sys-process/numactl
