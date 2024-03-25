@@ -48,7 +48,7 @@ emerge-world() {
 
 emerge-world
 
-emerge dev-vcs/git app-portage/mirrorselect
+emerge dev-vcs/git
 
 rm -rf /var/db/repos/gentoo
 
@@ -63,8 +63,6 @@ cat > /etc/portage/repos.conf/gentoo.conf <<-EOF
 EOF
 
 emerge --sync
-
-mirrorselect -s5
 
 emerge-world
 
