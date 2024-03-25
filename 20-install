@@ -7,6 +7,20 @@ app-admin/ansible-core
 app-admin/ansible-lint
 dev-java/mill-bin
 dev-python/ansible-compat
+
+# LLVM, clang, iwyu
+~sys-devel/clang-common-18.1.0
+~sys-devel/llvm-18.1.0
+~sys-devel/llvm-toolchain-symlinks-18
+~sys-devel/llvmgold-18
+~sys-devel/clang-18.1.0
+~sys-devel/clang-toolchain-symlinks-18
+~sys-libs/compiler-rt-18.1.0
+~sys-libs/compiler-rt-sanitizers-18.1.0
+~sys-libs/libomp-18.1.0
+~sys-devel/clang-runtime-18.1.0
+
+~dev-util/include-what-you-use-0.22
 EOF
 
 cat > /etc/portage/package.unmask/texlive <<EOF
