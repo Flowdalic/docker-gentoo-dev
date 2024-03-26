@@ -5,6 +5,7 @@ app-text/texlive
 app-text/tree
 dev-build/meson
 dev-cpp/gtest
+dev-debug/gdb
 dev-debug/valgrind
 dev-java/mill-bin
 dev-java/openjdk-bin
