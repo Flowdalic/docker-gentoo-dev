@@ -34,11 +34,17 @@ fi
 
 readonly DOCKER_COORDINATES="${CONTAINER_NAME}:${VERSION}"
 
+TMPFILE=$(mktemp --tmpdir=/var/tmp docker-build-log-${VERSION}.XXXXX)
+
+echo "Logging build to ${TMPFILE}"
+
 docker build \
 	   --compress=true \
 	   --tag="${DOCKER_COORDINATES}" \
 	   --no-cache="${NO_DOCKER_CACHE}" \
-	   .
+	   --progress=plain \
+	   . |& \
+    tee "${TMPFILE}"
 
 docker push "${DOCKER_COORDINATES}"
 
