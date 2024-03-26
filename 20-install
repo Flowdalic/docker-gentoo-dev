@@ -18,6 +18,8 @@ sys-devel/llvm-toolchain-symlinks:18
 <sys-devel/llvmgold-19
 sys-libs/compiler-rt:18
 sys-libs/compiler-rt-sanitizers:18
+<sys-libs/libcxx-19
+<sys-libs/libcxxabi-19
 <sys-libs/libomp-19
 
 ~dev-util/include-what-you-use-0.22
@@ -90,6 +92,8 @@ app-text/texlive luatex
 app-text/texlive publishers
 app-text/texlive science
 app-text/texlive tex4ht
+
+sys-devel/clang-runtime libcxx
 EOF
 
 cat >> /etc/portage/make.conf <<EOF
