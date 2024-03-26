@@ -15,4 +15,4 @@ RUN chmod 755 90-final && ./90-final
 
 # Set default entry point to login shell, so that Gentoo's
 # /etc/profile is sourced and we have, for example, clang in PATH.
-ENTRYPOINT ["/bin/bash", "-l"]
+ENTRYPOINT ["/bin/bash", "-l", "-c"]
