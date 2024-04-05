@@ -11,6 +11,7 @@ dev-debug/valgrind
 dev-java/mill-bin
 dev-java/openjdk-bin
 dev-lang/nasm
+dev-lang/opencilk-bin
 dev-lang/rust-bin
 dev-libs/boost
 dev-libs/userspace-rcu

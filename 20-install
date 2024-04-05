@@ -6,6 +6,7 @@ app-admin/ansible
 app-admin/ansible-core
 app-admin/ansible-lint
 dev-java/mill-bin
+dev-lang/opencilk-bin
 dev-python/ansible-compat
 
 # LLVM, clang, iwyu

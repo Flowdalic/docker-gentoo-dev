@@ -66,6 +66,21 @@ emerge --sync
 
 emerge-world
 
+BASE_PACKAGES=(
+    app-eselect/eselect-repository
+)
+
+emerge "${BASE_PACKAGES[@]}"
+
+OVERLAY_REPOS=(
+    flow
+)
+
+for REPO in "${OVERLAY_REPOS[@]}"; do
+    eselect repository enable "${REPO}"
+    emaint -r "${REPO}" sync
+done
+
 emerge --depclean
 
 cat > /usr/local/bin/drop-distdir <<-EOF
