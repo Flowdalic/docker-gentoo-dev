@@ -21,6 +21,7 @@ dev-util/shellcheck-bin
 media-fonts/fantasque-sans-mono
 media-fonts/inconsolata
 media-fonts/noto
+media-libs/netpbm
 sys-devel/clang
 sys-libs/liburing
 sys-process/numactl
