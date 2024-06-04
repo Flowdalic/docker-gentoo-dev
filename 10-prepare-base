@@ -26,14 +26,13 @@ export MAKEOPTS="--jobs ${NPROC} --load-average ${NPROC}"
 mkdir /etc/portage/package.unmask
 
 # Pull in kitty fix from latest gentoo-functions
-cat > /etc/portage/package.unmask/gentoo-functions <<EOF
-<sys-apps/gentoo-functions-1.1
+cat > /etc/portage/package.accept_keywords/gentoo-functions <<EOF
+<sys-apps/gentoo-functions-1.7
 EOF
-cp /etc/portage/package.{unmask,accept_keywords}/gentoo-functions
 emerge -1 gentoo-functions
 
 emerge-world() {
-    emerge \
+	emerge \
 	--update \
 	--changed-use \
 	--deep \
@@ -67,18 +66,19 @@ emerge --sync
 emerge-world
 
 BASE_PACKAGES=(
-    app-eselect/eselect-repository
+	app-eselect/eselect-repository
 )
 
 emerge "${BASE_PACKAGES[@]}"
 
 OVERLAY_REPOS=(
-    flow
+	flow
+	java
 )
 
 for REPO in "${OVERLAY_REPOS[@]}"; do
-    eselect repository enable "${REPO}"
-    emaint -r "${REPO}" sync
+	eselect repository enable "${REPO}"
+	emaint -r "${REPO}" sync
 done
 
 emerge --depclean
@@ -94,7 +94,7 @@ chmod 755 /usr/local/bin/drop-distdir
 
 cat > /usr/local/bin/drop-pkgdir <<-EOF
 	#!/usr/bin/env bash
-    set -euo pipefail
+	set -euo pipefail
 
 	PKGDIR=$(portageq pkgdir)
 	rm -rf "\${PKGDIR}"/*
