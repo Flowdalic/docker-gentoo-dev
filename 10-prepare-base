@@ -26,10 +26,9 @@ export MAKEOPTS="--jobs ${NPROC} --load-average ${NPROC}"
 mkdir /etc/portage/package.unmask
 
 # Pull in kitty fix from latest gentoo-functions
-cat > /etc/portage/package.unmask/gentoo-functions <<EOF
-<sys-apps/gentoo-functions-1.1
+cat > /etc/portage/package.accept_keywords/gentoo-functions <<EOF
+<sys-apps/gentoo-functions-1.7
 EOF
-cp /etc/portage/package.{unmask,accept_keywords}/gentoo-functions
 emerge -1 gentoo-functions
 
 emerge-world() {
