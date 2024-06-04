@@ -32,7 +32,7 @@ EOF
 emerge -1 gentoo-functions
 
 emerge-world() {
-    emerge \
+	emerge \
 	--update \
 	--changed-use \
 	--deep \
@@ -66,19 +66,19 @@ emerge --sync
 emerge-world
 
 BASE_PACKAGES=(
-    app-eselect/eselect-repository
+	app-eselect/eselect-repository
 )
 
 emerge "${BASE_PACKAGES[@]}"
 
 OVERLAY_REPOS=(
-    flow
-    java
+	flow
+	java
 )
 
 for REPO in "${OVERLAY_REPOS[@]}"; do
-    eselect repository enable "${REPO}"
-    emaint -r "${REPO}" sync
+	eselect repository enable "${REPO}"
+	emaint -r "${REPO}" sync
 done
 
 emerge --depclean
@@ -94,7 +94,7 @@ chmod 755 /usr/local/bin/drop-distdir
 
 cat > /usr/local/bin/drop-pkgdir <<-EOF
 	#!/usr/bin/env bash
-    set -euo pipefail
+	set -euo pipefail
 
 	PKGDIR=$(portageq pkgdir)
 	rm -rf "\${PKGDIR}"/*
