@@ -8,6 +8,7 @@ dev-cpp/gtest
 dev-cpp/tbb
 dev-debug/gdb
 dev-debug/valgrind
+dev-java/gradle-bin
 dev-java/mill-bin
 dev-java/openjdk-bin
 dev-lang/nasm
