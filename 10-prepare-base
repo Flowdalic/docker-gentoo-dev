@@ -73,6 +73,7 @@ emerge "${BASE_PACKAGES[@]}"
 
 OVERLAY_REPOS=(
     flow
+    java
 )
 
 for REPO in "${OVERLAY_REPOS[@]}"; do
