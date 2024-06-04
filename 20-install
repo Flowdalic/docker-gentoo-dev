@@ -24,6 +24,8 @@ sys-libs/compiler-rt-sanitizers:18
 <sys-libs/libomp-19
 
 ~dev-util/include-what-you-use-0.22
+
+dev-tex/rubber
 EOF
 
 cat > /etc/portage/package.unmask/texlive <<EOF
