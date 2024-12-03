@@ -24,5 +24,10 @@ media-fonts/inconsolata
 media-fonts/noto
 media-libs/netpbm
 sys-devel/clang
+sys-fs/bcachefs-tools
+sys-fs/btrfs-progs
+sys-fs/dosfstools
+sys-fs/e2fsprogs
+sys-fs/xfsprogs
 sys-libs/liburing
 sys-process/numactl
