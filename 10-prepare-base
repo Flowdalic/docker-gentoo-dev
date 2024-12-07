@@ -10,7 +10,7 @@ cat >> /etc/portage/make.conf <<-EOF
 	# FEATURES="\${FEATURES} buildpkg"
 	FEATURES="\${FEATURES} binpkg-request-signature"
 
-	EMERGE_DEFAULT_OPTS="--jobs 3 --binpkg-respect-use=y --getbinpkg=y"
+	EMERGE_DEFAULT_OPTS="--jobs 5 --binpkg-respect-use=y --getbinpkg=y"
 
 	LINGUAS="en de"
 	L10N="en de"
@@ -27,7 +27,7 @@ mkdir /etc/portage/package.unmask
 
 # Pull in kitty fix from latest gentoo-functions
 cat > /etc/portage/package.accept_keywords/gentoo-functions <<EOF
-<sys-apps/gentoo-functions-1.7
+<sys-apps/gentoo-functions-1.8
 EOF
 emerge -1 gentoo-functions
 
