@@ -1,4 +1,4 @@
-FROM gentoo/portage:latest as portage
+FROM gentoo/portage:latest AS portage
 FROM gentoo/stage3:latest
 
 WORKDIR /root
