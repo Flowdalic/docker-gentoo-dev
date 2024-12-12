@@ -30,6 +30,7 @@ dev-tex/rubber
 # TeX Live
 >=app-text/dvipsk-2024
 app-text/dvisvgm
+app-text/ttf2pk2
 >=app-text/ps2pkm-1.8_p20240311
 >=app-text/texlive-2024
 >=app-text/texlive-core-2024
