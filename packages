@@ -24,6 +24,7 @@ media-fonts/inconsolata
 media-fonts/noto
 media-libs/netpbm
 llvm-core/clang
+sys-apps/fd
 sys-devel/gcc:13
 sys-fs/bcachefs-tools
 sys-fs/btrfs-progs
