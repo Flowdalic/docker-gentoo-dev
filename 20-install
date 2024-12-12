@@ -152,7 +152,7 @@ app-text/texlive publishers
 app-text/texlive science
 app-text/texlive tex4ht
 
-sys-devel/clang-runtime libcxx
+llvm-core/clang-runtime libcxx
 EOF
 
 cat >> /etc/portage/make.conf <<EOF
