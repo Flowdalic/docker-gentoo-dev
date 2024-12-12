@@ -9,22 +9,6 @@ dev-java/mill-bin
 dev-lang/opencilk-bin
 dev-python/ansible-compat
 
-# LLVM, clang, iwyu
-sys-devel/clang:18
-<sys-devel/clang-common-19
-sys-devel/clang-runtime:18
-sys-devel/clang-toolchain-symlinks:18
-sys-devel/llvm:18
-sys-devel/llvm-toolchain-symlinks:18
-<sys-devel/llvmgold-19
-sys-libs/compiler-rt:18
-sys-libs/compiler-rt-sanitizers:18
-<sys-libs/libcxx-19
-<sys-libs/libcxxabi-19
-<sys-libs/libomp-19
-
-~dev-util/include-what-you-use-0.22
-
 dev-tex/rubber
 
 # TeX Live
