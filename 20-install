@@ -8,6 +8,7 @@ app-admin/ansible-lint
 dev-java/mill-bin
 dev-lang/opencilk-bin
 dev-python/ansible-compat
+dev-util/include-what-you-use
 
 dev-tex/rubber
 
