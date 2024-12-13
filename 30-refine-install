@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+cat >> /etc/portage/package.use/docker-gentoo-dev <<EOF
+llvm-core/clang-runtime libcxx
+EOF
+source /etc/profile
+emerge -1 clang-runtime
+
+# Clean distdir and pkgdir, since its contents will not be needed
+# anymore.
+drop-distdir
+drop-pkgdir

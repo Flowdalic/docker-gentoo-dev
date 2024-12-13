@@ -128,15 +128,13 @@ dev-tex/latex2pydata
 EOF
 cp /etc/portage/package.{unmask,accept_keywords}/texlive
 
-cat > /etc/portage/package.use/texlive <<EOF
+cat > /etc/portage/package.use/docker-gentoo-dev <<EOF
 app-text/texlive extra
 app-text/texlive graphics
 app-text/texlive luatex
 app-text/texlive publishers
 app-text/texlive science
 app-text/texlive tex4ht
-
-llvm-core/clang-runtime libcxx
 EOF
 
 cat >> /etc/portage/make.conf <<EOF
