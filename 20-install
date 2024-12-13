@@ -148,7 +148,45 @@ mapfile PACKAGES < packages
 NPROC=$(nproc)
 export MAKEOPTS="--jobs ${NPROC} --load-average ${NPROC}"
 
-emerge -tv ${PACKAGES[@]}
+set_emergejobs() {
+    if [[ -v EMERGEJOBS_OPTS ]]; then
+        return 0
+    fi
+
+    local -ir cores=$(nproc)
+    local -ir cores_per_job=6
+
+    local -i jobs=$((cores / cores_per_job))
+    if [[ ${jobs} -lt 1 ]]; then
+        jobs=1
+    fi
+
+    EMERGEJOBS_OPTS="--jobs ${jobs}"
+
+    if [[ ${jobs} -lt 2 ]]; then
+        return 0
+    fi
+
+    local -i free_job_slots
+    if [[ ${cores} -ge 128 ]]; then
+        free_job_slots=3
+    else
+        free_job_slots=2
+    fi
+
+    while [[ ${free_job_slots} -ge ${jobs} ]]; do
+        free_job_slots=$((free_job_slots - 1))
+    done
+    if [[ ${free_job_slots} -eq ${jobs} ]]; then
+           return 0
+    fi
+
+    local -ri load=$(( cores - (free_job_slots * cores_per_job) ))
+    EMERGEJOBS_OPTS+=" --load-average ${load}"
+}
+set_emergejobs
+
+emerge -tv ${EMERGEJOBS_OPTS} ${PACKAGES[@]}
 
 # Clean distdir and pkgdir, since its contents will not be needed
 # anymore.
