@@ -136,6 +136,8 @@ app-text/texlive luatex
 app-text/texlive publishers
 app-text/texlive science
 app-text/texlive tex4ht
+
+llvm-core/clang-runtime libcxx
 EOF
 
 cat >> /etc/portage/make.conf <<EOF
@@ -184,6 +186,10 @@ set_emergejobs() {
     EMERGEJOBS_OPTS+=" --load-average ${load}"
 }
 set_emergejobs
+
+# workaround for libcxxabi being installed with ABI_X86="32 64" but
+# clang with ABI_X86="64"
+export ABI_X86="32 64"
 
 emerge -tv ${EMERGEJOBS_OPTS} ${PACKAGES[@]}
 emerge --depclean
