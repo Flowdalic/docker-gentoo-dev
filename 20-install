@@ -186,6 +186,8 @@ set_emergejobs() {
 set_emergejobs
 
 emerge -tv ${EMERGEJOBS_OPTS} ${PACKAGES[@]}
+emerge --depclean
+force-update-conf
 
 # Clean distdir and pkgdir, since its contents will not be needed
 # anymore.
