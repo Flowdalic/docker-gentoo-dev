@@ -30,7 +30,6 @@ mkdir /etc/portage/package.unmask
 cat > /etc/portage/package.accept_keywords/gentoo-functions <<EOF
 <sys-apps/gentoo-functions-1.8
 EOF
-emerge -1 gentoo-functions
 
 emerge-world() {
 	emerge \
@@ -43,12 +42,11 @@ emerge-world() {
 	--tree \
 	--unordered-display \
 	--usepkg y \
-	@world
+	@world "$@"
 }
 
-emerge-world
-
-emerge dev-vcs/git
+emerge-world dev-vcs/git app-eselect/eselect-repository
+emerge --depclean
 
 rm -rf /var/db/repos/gentoo
 
@@ -62,14 +60,6 @@ cat > /etc/portage/repos.conf/gentoo.conf <<-EOF
 EOF
 
 emerge --sync
-
-emerge-world
-
-BASE_PACKAGES=(
-	app-eselect/eselect-repository
-)
-
-emerge "${BASE_PACKAGES[@]}"
 
 OVERLAY_REPOS=(
 	flow
